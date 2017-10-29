@@ -64,6 +64,7 @@
        ['gv (begin (println (get-val m))
                    m)]
        ['sv (set-val m (cadr input))]
+       ['halt (cons 'halted m)]
        [else (begin
                (displayln "Not a valid command!")
                m)])]
@@ -76,9 +77,13 @@
                  m)]))
 
 (define (program m inputfunc [tostring default-tostring])
-  (program (output-state (program-step m (inputfunc m)) tostring)
-           inputfunc
-           tostring))
+  (define new-state (program-step m (inputfunc m)))
+  (if (memory? new-state)
+      (program (output-state new-state tostring)
+               inputfunc
+               tostring)
+      (begin (output-state (cdr new-state) tostring)
+             (println (car new-state)))))
 
 
 (define (parse-to-command-list input list)
@@ -152,6 +157,15 @@
   (displayln out)
   out)
 
+(define (sample-program-3 m)
+  (define out (case (memory-val m)
+                ['() "sv 0"]
+                [(0) "sv 1"]
+                [(1) "halt"]))
+  (sleep 1)
+  (displayln out)
+  out)
+
 ;(mem-gen 4 2 (lambda (x) x))
 ;(mem-gen-fill 4 2 0)
 
@@ -159,5 +173,6 @@
 ;(start sample-program (mem-gen-fill 1 0 1))
 ;(start sample-program-2)
 ;(start sample-program-2 (mem-gen-fill 1 4 1))
+;(start sample-program-3)
 
 ;(start get-user-symbol-input)
