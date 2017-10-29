@@ -6,6 +6,8 @@ During the review tutorial for the final exam in CS 145, the TA brought up Turin
 
 He then jokingly suggested to the class that coding up a Turing machine in Racket might be good practice for the exam, but I had already started creating this basic Turing machine emulator by the time he made the suggestion.
 
+All of this took place on November 30, 2016; overall, the project took little more than an hour to complete.
+
 ## Usage
 
 The commented out lines at the bottom of [`tm.rkt`](/tm.rkt) are lines that can be run in order to see the machine in action.
