@@ -10,7 +10,7 @@ He then jokingly suggested to the class that coding up a Turing machine in Racke
 
 The commented out lines at the bottom of [`tm.rkt`](/tm.rkt) are lines that can be run in order to see the machine in action.
 
-* `(start sample-program)` and `(start sample-program-2)` start the respective programs with memory that is lazily initialized with `'()`.
+* `(start sample-program)`, `(start sample-program-2)`, and `(start sample-program-3)` start the respective programs with memory that is lazily initialized with `'()`.
 * `(start sample-program (mem-gen-fill 1 0 1))` and `(start sample-program-2 (mem-gen-fill 1 4 1))` start the programs with a user-defined initial state.
 * `(start get-user-symbol-input)` starts the emulator, setting it up to receive actions to be taken from user input.
 
